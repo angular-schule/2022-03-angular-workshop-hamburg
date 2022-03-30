@@ -1,0 +1,17 @@
+{
+  "name": "typescript-playground",
+  "version": "1.0.0",
+  "description": "Mein erstes mal Typescript",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && node main.js",
+    "version": "tsc --version"
+  },
+  "author": "Johannes",
+  "license": "MIT",
+  "dependencies": {
+    "typescript": "^4.6.3"
+  }
+}
