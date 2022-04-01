@@ -11,4 +11,8 @@ export class BookComponent  {
   // book: Book | undefined = undefined;
   @Input()
   book?: Book;
+
+  get starCount() {
+    return new Array(this.book?.rating);
+  }
 }

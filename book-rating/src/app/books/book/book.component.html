@@ -6,6 +6,9 @@
       <h2>
         {{ book.title }}
         <span class="badge bg-secondary">{{ book.rating }}</span>
+
+        <!-- <ng-container>{{ '⭐️'.repeat(book.rating) }}</ng-container> -->
+        <ng-container *ngFor="let s of starCount">⭐️</ng-container>
       </h2>
     </div>
     <p>{{ book.description }}</p>
