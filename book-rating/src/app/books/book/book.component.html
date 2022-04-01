@@ -13,16 +13,7 @@
     </div>
     <p>{{ book.description }}</p>
 
-    <!---
-    TODO / ACHTUNG / REFACTOR-ME / BAD PRACTICE
-
-    1. Gegen Single Responsibility verstoßen
-    2. Keine Logik im Template
-    3. Pseudo-Immutable Objekte mutiert
-    4. Potentiell schlechte Performance (default change detection)
-    -->
-
-    <button class="btn btn-secondary me-2" (click)="book.rating = book.rating - 1">-</button>
-    <button class="btn btn-primary" (click)="book.rating = book.rating + 1">+</button>
+    <button class="btn btn-secondary me-2" (click)="doRateDown()">-</button>
+    <button class="btn btn-primary" (click)="doRateUp()">+</button>
   </div>
 </div>
