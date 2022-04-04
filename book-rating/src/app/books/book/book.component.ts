@@ -23,10 +23,12 @@ export class BookComponent  {
     return new Array(this.book?.rating);
   }
 
+  /* istanbul ignore next trivial statement */
   doRateUp() {
     this.rateUp.emit(this.book);
   }
 
+  /* istanbul ignore next trivial statement */
   doRateDown() {
     this.rateDown.emit(this.book);
   }

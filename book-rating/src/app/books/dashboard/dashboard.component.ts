@@ -29,12 +29,15 @@ export class DashboardComponent {
   }];
 
   constructor(private br: BookRatingService) {
-
     //setTimeout(() => this.books = [], 5000);
    }
 
   doRateUp(book: Book): void {
     const ratedBook = this.br.rateUp(book);
+    // const ratedBook = {
+    //   ...book,
+    //   rating: book.rating < 5 ? book.rating + 1 : 5
+    // }
     this.updateAndSort(ratedBook);
   }
 
