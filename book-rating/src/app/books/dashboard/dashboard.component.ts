@@ -51,4 +51,8 @@ export class DashboardComponent {
       .map(x => x.isbn === ratedBook.isbn ? ratedBook : x)
       .sort((a, b) => b.rating - a.rating)
   }
+
+  doAddBook(book: Book): void {
+    this.books = [...this.books, book];
+  }
 }
