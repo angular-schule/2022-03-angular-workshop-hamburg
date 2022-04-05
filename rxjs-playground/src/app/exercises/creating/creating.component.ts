@@ -23,7 +23,14 @@ export class CreatingComponent {
     /******************************/
 
     const myObservable$ = of('🤯', '🤪', '😎');
-    myObservable$.subscribe(smilie => this.log(smilie));
+
+    const observer = {
+      next: (smilie: string) => this.log(smilie),
+      error: (err: any) => this.log(err),
+      complete: () => this.log('✅ Complete!')
+    }
+
+    myObservable$.subscribe(observer);
 
 
     /******************************/
