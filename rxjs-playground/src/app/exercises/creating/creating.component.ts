@@ -22,7 +22,10 @@ export class CreatingComponent {
 
     /******************************/
 
-    
+    const myObservable$ = of('🤯', '🤪', '😎');
+    myObservable$.subscribe(smilie => this.log(smilie));
+
+
     /******************************/
   }
 
