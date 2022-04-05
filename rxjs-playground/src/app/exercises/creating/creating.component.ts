@@ -22,8 +22,25 @@ export class CreatingComponent {
 
     /******************************/
 
-    // Observable
-    const myObservable$ = of('🤯', '🤪', '😎');
+    // Observable + Subscriber
+    // const myObservable$ = of('🤯', '🤪', '😎');
+    const myObservable$ = new Observable<string>(subscriber => {
+
+      subscriber.next('🤯');
+      subscriber.next('🤩');
+      // subscriber.error('ERROR 😡');
+
+      subscriber.next('😡');
+
+      const x = setTimeout(() => { subscriber.next('SPÄTER!'); console.log('ZOMBIE CODE! 🧟‍♂️🧟‍♀️') }, 2000);
+      const y = setTimeout(() => subscriber.complete(), 3000);
+
+      return () => {
+        console.log('jemand hat unsubscribed');
+        clearTimeout(x);
+        clearTimeout(y);
+      }
+    });
 
     // Observer
     const observer = {
@@ -34,7 +51,7 @@ export class CreatingComponent {
 
     // Subscription
     const subscription = myObservable$.subscribe(observer);
-    subscription.unsubscribe();
+    setTimeout(() => subscription.unsubscribe(), 1500);
 
 
     /******************************/
