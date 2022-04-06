@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BookComponent } from '../book/book.component';
 import { Book } from '../shared/book';
@@ -25,6 +26,9 @@ describe('DashboardComponent', () => {
           provide: BookRatingService,
           useValue: bookRatingMock
         }
+      ],
+      imports: [
+        HttpClientTestingModule
       ]
     })
     .compileComponents();
