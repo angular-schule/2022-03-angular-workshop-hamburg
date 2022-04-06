@@ -11,7 +11,7 @@ export class BookComponent  {
 
   // book: Book | undefined = undefined;
   @Input()
-  book?: Book;
+  book?: Book | null;
 
   @Output()
   rateUp = new EventEmitter<Book | undefined>();
@@ -25,12 +25,16 @@ export class BookComponent  {
 
   /* istanbul ignore next trivial statement */
   doRateUp() {
-    this.rateUp.next(this.book);
+    if (this.book) {
+      this.rateUp.next(this.book);
+    }
   }
 
   /* istanbul ignore next trivial statement */
   doRateDown() {
-    this.rateDown.next(this.book);
+    if (this.book) {
+      this.rateDown.next(this.book);
+    }
   }
 
   log() {
