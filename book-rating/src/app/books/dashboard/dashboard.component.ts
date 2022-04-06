@@ -20,7 +20,8 @@ export class DashboardComponent {
       this.bs.getBooks().subscribe(books => this.books = books);
    }
 
-  doRateUp(book: Book): void {
+  doRateUp(book: Book | undefined): void {
+    if (!book) return;
     const ratedBook = this.br.rateUp(book);
     // const ratedBook = {
     //   ...book,
@@ -29,7 +30,8 @@ export class DashboardComponent {
     this.updateAndSort(ratedBook);
   }
 
-  doRateDown(book: Book): void {
+  doRateDown(book: Book | undefined): void {
+    if (!book) return;
     const ratedBook = this.br.rateDown(book);
     this.updateAndSort(ratedBook);
   }
