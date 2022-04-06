@@ -1,6 +1,7 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { concatMap, map, mergeMap, shareReplay, switchMap } from 'rxjs';
+import { catchError, concatMap, map, mergeMap, of, shareReplay, switchMap } from 'rxjs';
 import { BookStoreService } from '../shared/book-store.service';
 
 @Component({
@@ -14,7 +15,10 @@ export class BookDetailsComponent {
   book$ = this.route.paramMap.pipe(
     map(paramMap => paramMap.get('isbn')),
     switchMap(isbn => this.bs.getSingleBook(isbn!)),
-    // shareReplay(1)
+    catchError((err: HttpErrorResponse) => of({
+      title: 'FEHLER',
+      description: err.message
+    }))
   );
 
 
