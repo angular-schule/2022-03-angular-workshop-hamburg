@@ -14,10 +14,10 @@ export class BookComponent  {
   book?: Book;
 
   @Output()
-  rateUp = new EventEmitter<Book>();
+  rateUp = new EventEmitter<Book | undefined>();
 
   @Output()
-  rateDown = new EventEmitter<Book>();
+  rateDown = new EventEmitter<Book | undefined>();
 
   get starCount() {
     return new Array(this.book?.rating);
@@ -25,12 +25,12 @@ export class BookComponent  {
 
   /* istanbul ignore next trivial statement */
   doRateUp() {
-    this.rateUp.emit(this.book);
+    this.rateUp.next(this.book);
   }
 
   /* istanbul ignore next trivial statement */
   doRateDown() {
-    this.rateDown.emit(this.book);
+    this.rateDown.next(this.book);
   }
 
   log() {
