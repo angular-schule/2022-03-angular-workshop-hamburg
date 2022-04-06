@@ -21,7 +21,16 @@ export class FromeventComponent {
 
     /******************************/
 
-    
+    // 🤯
+    fromEvent(window, 'resize').pipe(
+      // nicht "pure", schwer testbar
+      // map(() => window.innerWidth)
+      debounceTime(2000),
+      map(event => (event.target as Window).innerWidth),
+      startWith(window.innerWidth),
+      map(x => x * -1),
+    ).subscribe(width => this.currentWidth = width)
+
     /******************************/
   }
 
