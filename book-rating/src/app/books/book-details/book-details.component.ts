@@ -18,7 +18,9 @@ export class BookDetailsComponent {
       retry(3),
       catchError((err: HttpErrorResponse) => of({
         title: 'FEHLER',
-        description: err.message
+        description: err.message,
+        rating: -99,
+        isbn: '000'
       }))
     ))
   );
