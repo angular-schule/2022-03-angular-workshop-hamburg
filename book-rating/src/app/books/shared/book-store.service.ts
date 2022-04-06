@@ -15,7 +15,7 @@ export class BookStoreService {
       'https://api.angular.schule/books');
   }
 
-  getSingleBooks(isbn: string): Observable<Book> {
+  getSingleBook(isbn: string): Observable<Book> {
     return this.http.get<Book>(
       'https://api.angular.schule/books/' + isbn);
   }
